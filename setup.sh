@@ -54,6 +54,13 @@ EOF
 )
 echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
 
+echo "--- extensões php"
+sudo apt-get install php7.0-bcmath
+sudo apt-get -y install php-intl
+sudo apt-get -y install php-soap
+sudo apt-get -y install php7.0-zip
+
+
 echo "--- habilitar mod-rewrite do apache ---"
 sudo a2enmod rewrite
 
