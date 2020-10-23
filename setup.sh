@@ -24,8 +24,12 @@ echo "--- instalar php, libapache2-mod-php ---"
 sudo apt-get -y install php libapache2-mod-php
 
 echo "--- instalar modulos php ---"
+sudo apt-get install php7.0-bcmath
 sudo apt-get -y install php-curl
 sudo apt-get -y install php-mcrypt
+sudo apt-get -y install php-intl
+sudo apt-get -y install php-soap
+sudo apt-get -y install php7.0-zip
 
 echo "--- instalar mysql e fornercer senha para o instalador, instalando php-mysql-- "
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
@@ -53,13 +57,6 @@ VHOST=$(cat <<EOF
 EOF
 )
 echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
-
-echo "--- extensões php"
-sudo apt-get install php7.0-bcmath
-sudo apt-get -y install php-intl
-sudo apt-get -y install php-soap
-sudo apt-get -y install php7.0-zip
-
 
 echo "--- habilitar mod-rewrite do apache ---"
 sudo a2enmod rewrite
